@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.study.domain.user.UserMapper">
+<mapper namespace="com.budgetchecker.domain.user.UserMapper">
 
     <!-- tb_user 테이블 전체 컬럼 -->
     <sql id="userColumns">
         id
         , username
-        , nickname
         , password
         , email
-        , created_date
-        , modified_date
+        , created_at
+        , updated_at
+        , delete_tn
+        , nickname
     </sql>
 
     <insert id="save" parameterType="com.budgetchecker.domain.user.User" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO tb_user (
+        INSERT INTO user (
         <include refid="userColumns" />
         ) VALUES (
         #{id}
         , #{username}
-        , #{nickname}
         , #{password}
         , #{email}
         , NOW()
         , NULL
+        , 0
+        , #{nickname}
         )
     </insert>
 
     <update id="userUpdate" parameterType="com.budgetchecker.domain.user.User">
-        UPDATE tb_user
+        UPDATE user
         SET
         modified_date = NOW()
         , nickname = #{nickname}
@@ -42,7 +44,7 @@
         SELECT
         <include refid="userColumns" />
         FROM
-        tb_user
+        user
         WHERE
         id = #{id}
     </select>
@@ -51,7 +53,7 @@
         SELECT
         <include refid="userColumns" />
         FROM
-        tb_user
+        user
         WHERE
         username = #{username}
     </select>
@@ -60,7 +62,7 @@
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
-        tb_user
+        user
         WHERE
         email = #{value}
     </select>
@@ -69,7 +71,7 @@
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
-        tb_user
+        user
         WHERE
         nickname = #{value}
     </select>
@@ -78,7 +80,7 @@
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
-        tb_user
+        user
         WHERE
         username = #{value}
     </select>

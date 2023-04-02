@@ -69,7 +69,7 @@ public class UserDto {
             this.username = user.getUsername();
             this.nickname = user.getNickname();
             this.email = user.getEmail();
-            this.modifiedDate = String.valueOf(user.getModifiedDate());
+            this.modifiedDate = String.valueOf(user.getUpdatedAt());
         }
     }
 }

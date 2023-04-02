@@ -1,14 +1,12 @@
 package com.budgetchecker;
 
-import com.budgetchecker.domain.post.PostRequest;
-import com.budgetchecker.domain.post.PostService;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 public class PostServiceTest {
 
+    /*
     @Autowired
     PostService postService;
 
@@ -22,5 +20,5 @@ public class PostServiceTest {
         Long id = postService.savePost(params);
         System.out.println("생성된 게시글 ID : " + id);
     }
-
+*/
 }

@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 @Entity
 public class User {
 
@@ -28,8 +29,9 @@ public class User {
     @Column(nullable = false, length = 50, unique = true)
     private String email;
 
-    private LocalDateTime createdDate;     // 생성일시
-    private LocalDateTime modifiedDate;    // 최종 수정일시
+    private LocalDateTime createdAt;     // 생성일시
+    private LocalDateTime updatedAt;    // 최종 수정일시
+    private boolean deleteYn;
 
     /* 회원정보 수정 */
     public void modify(String nickname, String password) {
@@ -39,8 +41,8 @@ public class User {
 
     /* 소셜로그인시 이미 등록된 회원이라면 수정날짜만 업데이트해줘서
      * 기존 데이터를 보존하도록 예외처리 */
-    public User updateModifiedDate() {
-        this.modifiedDate = LocalDateTime.now();
+    public User updateUpdatedAt() {
+        this.updatedAt = LocalDateTime.now();
         return this;
     }
 
