@@ -64,4 +64,9 @@ public class UserMapperTest {
         }
     }
 
+    @Test
+    void delete() {
+        userMapper.deleteById(1L);
+    }
+
 }

@@ -40,6 +40,14 @@
         id = #{id}
     </update>
 
+    <update id="deleteById" parameterType="com.example.demo.domain.user.User">
+        UPDATE user
+        SET
+        delete_yn = 1
+        WHERE
+        id = #{id}
+    </update>
+
     <select id="findById" resultType="com.example.demo.domain.user.User">
         SELECT
         <include refid="userColumns" />
@@ -47,6 +55,8 @@
         user
         WHERE
         id = #{id}
+        and
+        delete_yn=0
     </select>
 
     <select id="findByUsername" resultType="com.example.demo.domain.user.User">
@@ -56,6 +66,8 @@
         user
         WHERE
         username = #{username}
+        and
+        delete_yn=0
     </select>
 
     <select id="existsByEmail" parameterType="com.example.demo.domain.user.User" resultType="java.lang.Boolean">
@@ -65,6 +77,8 @@
         user
         WHERE
         email = #{value}
+        and
+        delete_yn=0
     </select>
 
     <select id="existsByNickname" parameterType="com.example.demo.domain.user.User" resultType="java.lang.Boolean">
@@ -74,6 +88,8 @@
         user
         WHERE
         nickname = #{value}
+        and
+        delete_yn=0
     </select>
 
     <select id="existsByUsername" parameterType="com.example.demo.domain.user.User" resultType="java.lang.Boolean">
@@ -83,6 +99,8 @@
         user
         WHERE
         username = #{value}
+        and
+        delete_yn=0
     </select>
 
 
