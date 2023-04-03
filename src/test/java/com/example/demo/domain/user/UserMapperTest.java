@@ -32,9 +32,31 @@ public class UserMapperTest {
 
     @Test
     void findById(){
-        Optional<User> post = userMapper.findById(1L);
+        Optional<User> user = userMapper.findById(1L);
         try {
-            String postJson = new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(post);
+            String postJson = new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(user);
+            System.out.println(postJson);
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Test
+    void update() {
+        // 1. 게시글 수정
+        UserDto.Request user = new UserDto.Request();
+        user.setId(1L);
+        user.setEmail("brassdong@gmail.com");
+        user.setPassword("ehdduq0617!");
+        user.setNickname("이름 바뀐 테스터");
+        user.setUsername("brassdong");
+        userMapper.userUpdate(user.toEntity());
+
+        // 2. 게시글 상세정보 조회
+        Optional<User> user2 = userMapper.findById(1L);
+        try {
+            String postJson = new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(user2);
             System.out.println(postJson);
 
         } catch (JsonProcessingException e) {

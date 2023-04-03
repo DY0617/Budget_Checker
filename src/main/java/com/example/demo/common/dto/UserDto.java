@@ -62,7 +62,7 @@ public class UserDto {
         private final String username;
         private final String nickname;
         private final String email;
-        private final String modifiedDate;
+        private final String updatedAt;
 
         /* Entity -> dto */
         public Response(User user) {
@@ -70,7 +70,7 @@ public class UserDto {
             this.username = user.getUsername();
             this.nickname = user.getNickname();
             this.email = user.getEmail();
-            this.modifiedDate = String.valueOf(user.getUpdatedAt());
+            this.updatedAt = String.valueOf(user.getUpdatedAt());
         }
     }
 }

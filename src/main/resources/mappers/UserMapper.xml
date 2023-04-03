@@ -33,7 +33,7 @@
     <update id="userUpdate" parameterType="com.example.demo.domain.user.User">
         UPDATE user
         SET
-        modified_date = NOW()
+        updated_at = NOW()
         , nickname = #{nickname}
         , password = #{password}
         WHERE
