@@ -113,9 +113,6 @@ public class UserController {
         return showMessageAndRedirect(message, model);
     }
 
-    @GetMapping("/account")
-    public String openPostWrite(Model model) {
-        return "account/main";
-    }
+
 
 }
