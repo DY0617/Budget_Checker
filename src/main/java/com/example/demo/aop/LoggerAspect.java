@@ -12,7 +12,7 @@ import org.thymeleaf.util.StringUtils;
 @Component
 public class LoggerAspect {
 
-    @Around("execution(* com.study.domain..*Controller.*(..)) || execution(* com.study.domain..*Service.*(..)) || execution(* com.study.domain..*Mapper.*(..))")
+    @Around("execution(* com.example.demo.domain..*Controller.*(..)) || execution(* com.example.demo.domain..*Service.*(..)) || execution(* com.example.demo.domain..*Mapper.*(..))")
     public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable {
 
         String name = joinPoint.getSignature().getDeclaringTypeName();
