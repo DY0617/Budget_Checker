@@ -5,6 +5,7 @@ import com.example.demo.common.dto.UserDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootTest
 public class UserServiceTest {
@@ -22,4 +23,22 @@ public class UserServiceTest {
         userService.userJoin(user);
         System.out.println("유저 생성");
     }
+
+
+
+
+    @Test
+    void userUpdate() {
+
+
+        UserDto.Request user = new UserDto.Request();
+        user.setId(1L);
+        user.setEmail("brassdong@gmail.com");
+        user.setPassword("ehdduq0617!");
+        user.setNickname("첫계정");
+        user.setUsername("brassdong");
+        userService.updateMember(user);
+    }
+
+
 }
