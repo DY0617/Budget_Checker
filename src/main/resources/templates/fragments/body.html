@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<body th:fragment="main-body">
+<div id="adm_wrap">
+    <header>
+        <div class="head">
+            <a href="/post/list.do" class="on" style="color:323232;font-size: 2.1em;font-weight: bold;">Chat Board</a>
+
+            <div th:if="${user==null}" style="float: right;">
+                    <a href="/auth/login" role="button" class="btns btn_bdr1 btn_mid"> 로그인</a>
+                    <a href="/auth/join" role="button" class="btns btn_bdr3 btn_mid"> 회원가입</a>
+            </div>
+
+            <div th:unless="${user==null}" style="float: right;">
+                <span th:text="${user.nickname}"></span>
+                <span>님 안녕하세요!</span>
+                <a href="/logout" class="btns btn_bdr4 btn_mid">로그아웃</a>
+                <a href="/modify" class="btns btn_bdr5 btn_mid">회원정보 수정</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="container">
+        <div class="menu_toggle"><span></span></div>
+        <!--/* 좌측 영역 */-->
+        <div class="lcontent">
+            <!--/* 메뉴
+
+            <nav>
+                <ul>
+                    <li class="has_sub"><a href="javascript: void(0);" class="on"><span>게시판 관리</span></a>
+                        <ul>
+                            <li><a href="/post/list.do">자유게시판</a></li>
+                        </ul>
+                    </li>
+                    <li class="has_sub"><a href="javascript: void(0);" class="on"><span>내 게시판 관리</span></a>
+                        <ul>
+                            <li><a href="/post/listMy.do">내가 작성한 글</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            */-->
+        </div>
+
+        <!--/* 우측 영역 */-->
+        <div class="rcontent">
+
+            <!--/* 페이지별 컨텐츠 */-->
+            <th:block layout:fragment="content"></th:block>
+
+        </div>
+    </div> <!--/* // #container */-->
+    <footer>Copyright(c)네임즈.All rights reserved.</footer>
+</div>
+
+<script th:src="@{/js/function.js}"></script>
+<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script src="https://kit.fontawesome.com/79613ae794.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
+<th:block layout:fragment="script"></th:block>
+</body>
+</html>
