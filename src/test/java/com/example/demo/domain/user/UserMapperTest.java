@@ -43,6 +43,19 @@ public class UserMapperTest {
     }
 
     @Test
+    void findByUsername(){
+        Optional<User> user = userMapper.findByUsername("brassdong");
+        try {
+            String postJson = new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(user);
+            System.out.println(postJson);
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    @Test
     void update() {
         // 1. 게시글 수정
         UserDto.Request user = new UserDto.Request();
