@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.budgetchecker.domain.user.UserMapper">
+<mapper namespace="com.example.demo.domain.user.UserMapper">
 
     <!-- tb_user 테이블 전체 컬럼 -->
     <sql id="userColumns">
@@ -15,7 +15,7 @@
         , nickname
     </sql>
 
-    <insert id="save" parameterType="com.budgetchecker.domain.user.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.example.demo.domain.user.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user (
         <include refid="userColumns" />
         ) VALUES (
@@ -30,7 +30,7 @@
         )
     </insert>
 
-    <update id="userUpdate" parameterType="com.budgetchecker.domain.user.User">
+    <update id="userUpdate" parameterType="com.example.demo.domain.user.User">
         UPDATE user
         SET
         modified_date = NOW()
@@ -40,7 +40,7 @@
         id = #{id}
     </update>
 
-    <select id="findById" resultType="com.budgetchecker.domain.user.User">
+    <select id="findById" resultType="com.example.demo.domain.user.User">
         SELECT
         <include refid="userColumns" />
         FROM
@@ -49,7 +49,7 @@
         id = #{id}
     </select>
 
-    <select id="findByUsername" resultType="com.budgetchecker.domain.user.User">
+    <select id="findByUsername" resultType="com.example.demo.domain.user.User">
         SELECT
         <include refid="userColumns" />
         FROM
@@ -58,7 +58,7 @@
         username = #{username}
     </select>
 
-    <select id="existsByEmail" parameterType="com.budgetchecker.domain.user.User" resultType="java.lang.Boolean">
+    <select id="existsByEmail" parameterType="com.example.demo.domain.user.User" resultType="java.lang.Boolean">
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
@@ -67,7 +67,7 @@
         email = #{value}
     </select>
 
-    <select id="existsByNickname" parameterType="com.budgetchecker.domain.user.User" resultType="java.lang.Boolean">
+    <select id="existsByNickname" parameterType="com.example.demo.domain.user.User" resultType="java.lang.Boolean">
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
@@ -76,7 +76,7 @@
         nickname = #{value}
     </select>
 
-    <select id="existsByUsername" parameterType="com.budgetchecker.domain.user.User" resultType="java.lang.Boolean">
+    <select id="existsByUsername" parameterType="com.example.demo.domain.user.User" resultType="java.lang.Boolean">
         SELECT
         IF(COUNT(*) = 1, 1, 0)
         FROM
