@@ -11,7 +11,7 @@
         , email
         , created_at
         , updated_at
-        , delete_tn
+        , delete_yn
         , nickname
     </sql>
 
