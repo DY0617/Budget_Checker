@@ -25,50 +25,51 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CustomUserDetailsService customUserDetailsService;
-  private final AuthenticationFailureHandler customFailureHandler;
+    private final AuthenticationFailureHandler customFailureHandler;
 
-  @Bean
-  public BCryptPasswordEncoder encoder() {
-    return new BCryptPasswordEncoder();
-  }
+    @Bean
+    public BCryptPasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(customUserDetailsService).passwordEncoder(encoder());
-  }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserDetailsService).passwordEncoder(encoder());
+    }
 
-  @Bean
-  @Override
-  public AuthenticationManager authenticationManagerBean() throws Exception {
-    return super.authenticationManagerBean();
-  }
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
-  
-          @Override
-  public void configure(WebSecurity web) throws Exception {
-    web
-        .ignoring().antMatchers( "/css/**", "/js/**", "/img/**");
-  }
-  
-          @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http
-        .authorizeRequests()
-        .antMatchers("/**", "/auth/**")
-        .permitAll()
-        .anyRequest()
-        .authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/auth/login")
-        .loginProcessingUrl("/auth/loginProc")
-            .failureHandler(customFailureHandler)
-        .defaultSuccessUrl("/access")
 
-            .and()
-        .logout()
-        .logoutSuccessUrl("/access")
-        .invalidateHttpSession(true).deleteCookies("JSESSIONID");
-  }
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+                .ignoring().antMatchers("/css/**", "/js/**", "/img/**");
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/**", "/auth/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/auth/login")
+                .loginProcessingUrl("/auth/loginProc")
+                .failureHandler(customFailureHandler)
+                .defaultSuccessUrl("/access")
+
+                .and()
+                .logout()
+                .logoutSuccessUrl("/access")
+                .invalidateHttpSession(true).deleteCookies("JSESSIONID");
+    }
 
 }
