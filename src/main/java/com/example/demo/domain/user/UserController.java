@@ -47,7 +47,7 @@ public class UserController {
 
     @GetMapping
     public String root() {
-        return "redirect:/post/list.do";
+        return "redirect:/account";
     }
 
     @GetMapping("/auth/join")
