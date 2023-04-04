@@ -1,6 +1,7 @@
 <!doctype html>
 <html html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-  <head><script src="../assets/js/color-modes.js"></script>
+<head>
+    <script src="../assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,14 +11,25 @@
     <title>Signin Template · Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    
 
-    
-
-<link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
+
+        body {
+      min-height: 100vh;
+
+      background: -webkit-gradient(linear, left bottom, right top, from(#92b5db), to(#1d466c));
+      background: -webkit-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -moz-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: -o-linear-gradient(bottom left, #92b5db 0%, #1d466c 100%);
+      background: linear-gradient(to top right, #92b5db 0%, #1d466c 100%);
+    }
+
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -89,47 +101,70 @@
       .bd-mode-toggle {
         z-index: 1500;
       }
+
+
+      .input-form {
+      max-width: 400px;
+
+      margin-top: 80px;
+      padding: 32px;
+
+      background: #fff;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15);
+      box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
+    }
+
     </style>
 
-    
+
     <!-- Custom styles for this template -->
     <link href="/css/sign-in.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
+</head>
+<body class="text-center">
 
 
+<div class="container">
+    <div class="input-form-backgroud row">
+        <div class="input-form col-md-12 mx-auto">
+            <main class="form-signin w-100 m-auto">
+                <form th:action="@{/auth/loginProc}" method="post">
+                    <a href="/account" class="h2 mb-3 fw-semibold"
+                       style="text-decoration-line: none;">Budget-Checker</a>
+                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-    
-<main class="form-signin w-100 m-auto">
-  <form th:action="@{/auth/loginProc}" method="post">
-    <a href="/account" class="h2 mb-3 fw-semibold" style="text-decoration-line: none;">Budget-Checker</a>
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="username">
+                        <label th:for="username">아이디를 입력해주세요.</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="password">
+                        <label th:for="password">비밀번호를 입력해주세요.</label>
+                    </div>
 
-    <div class="form-floating">
-      <input type="text" class="form-control" id="username" name="username" placeholder="username">
-      <label th:for="username">아이디를 입력해주세요.</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="password" name="password" placeholder="password">
-      <label th:for="password">비밀번호를 입력해주세요.</label>
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <span th:if="${error!=null}">
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <span th:if="${error!=null}">
                     <p style="color:red;" th:text="${exception}"></p>
                 </span>
 
-    <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-bottom:2px;">Sign in</button>
-    <a href="/auth/join" class="w-100 btn btn-lg btn-secondary" >Sign up</a>
-    <p class="mt-5 mb-3 text-body-secondary">&copy; 2023–2023</p>
-  </form>
-</main>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-bottom:2px;">Sign in
+                    </button>
+                    <a href="/auth/join" class="w-100 btn btn-lg btn-secondary">Sign up</a>
+                    <p class="mt-5 mb-3 text-body-secondary">&copy; 2023–2023</p>
+                </form>
+            </main>
+        </div>
+    </div>
+</div>
 
 
-    
-  </body>
+</body>
 </html>
