@@ -44,16 +44,16 @@
   <div class="input-form-backgroud row">
     <div class="input-form col-md-12 mx-auto">
       <h4 class="mb-3">회원가입</h4>
-      <form class="validation-form" novalidate>
+      <form id="joinForm" action="/auth/joinProc" method="post">
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <div class="mb-3">
             <label for="name">이름</label>
             <input type="text" class="form-control" id="name" placeholder="" value="" required>
             <div class="invalid-feedback">
               이름을 입력해주세요.
             </div>
           </div>
-          <div class="col-md-6 mb-3">
+          <div class="mb-3">
             <label for="nickname">별명</label>
             <input type="text" class="form-control" id="nickname" placeholder="" value="" required>
             <div class="invalid-feedback">
@@ -70,39 +70,6 @@
           </div>
         </div>
 
-        <div class="mb-3">
-          <label for="address">주소</label>
-          <input type="text" class="form-control" id="address" placeholder="서울특별시 강남구" required>
-          <div class="invalid-feedback">
-            주소를 입력해주세요.
-          </div>
-        </div>
-
-        <div class="mb-3">
-          <label for="address2">상세주소<span class="text-muted">&nbsp;(필수 아님)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="상세주소를 입력해주세요.">
-        </div>
-
-        <div class="row">
-          <div class="col-md-8 mb-3">
-            <label for="root">가입 경로</label>
-            <select class="custom-select d-block w-100" id="root">
-              <option value=""></option>
-              <option>검색</option>
-              <option>카페</option>
-            </select>
-            <div class="invalid-feedback">
-              가입 경로를 선택해주세요.
-            </div>
-          </div>
-          <div class="col-md-4 mb-3">
-            <label for="code">추천인 코드</label>
-            <input type="text" class="form-control" id="code" placeholder="" required>
-            <div class="invalid-feedback">
-              추천인 코드를 입력해주세요.
-            </div>
-          </div>
-        </div>
         <hr class="mb-4">
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="aggrement" required>
@@ -117,22 +84,34 @@
     <p class="mb-1">&copy; 2023 DY</p>
   </footer>
 </div>
-<script>
-    window.addEventListener('load', () => {
-      const forms = document.getElementsByClassName('validation-form');
+<script th:inline="javascript">
+        /*<![CDATA[*/
 
-      Array.prototype.filter.call(forms, (form) => {
-        form.addEventListener('submit', function (event) {
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
+        window.onload = () => {
+            getUserDto();
+        }
 
-          form.classList.add('was-validated');
-        }, false);
-      });
-    }, false);
-  </script>
+
+        function getUserDto() {
+            const dto = [[ ${userDto}]];
+
+            if (!dto) {
+                return false;
+            }
+
+            const form = document.getElementById('joinForm');
+            const fields = ['username', 'password', 'nickname', 'email'];
+
+
+
+            fields.forEach(field => {
+                form[field].value = dto[field];
+            })
+        }
+
+
+        /*]]>*/
+    </script>
 </body>
 
 </html>
