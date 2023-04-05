@@ -2,38 +2,84 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body th:fragment="main-body">
 <div id="adm_wrap">
+
+    <div id="mobile-menu-open" class="shadow-large">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </div>
     <header>
-        <main>
-            <div class="container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-                    <ul class="nav col-12 col-md-auto mb-2 justify-content-left mb-md-0">
-                        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-                        <li><a href="#" class="nav-link px-2">Features</a></li>
-                        <li><a href="#" class="nav-link px-2">Pricing</a></li>
-                        <li><a href="#" class="nav-link px-2">FAQs</a></li>
-                        <li><a href="#" class="nav-link px-2">About</a></li>
-                    </ul>
-                    <a style="color:323232;font-size: 2em;font-weight: bold;">Budget Checker</a>
-                    <div th:if="${user==null}" class="col-md-3 text-end">
-                        <a href="/auth/login" role="button" class="btn btn-outline-primary me-2" style="text-decoration-line: none;">Login</a>
-                        <a href="/auth/join" role="button" class="btn btn-primary" style="text-decoration-line: none;">Sign-up</a>
-                    </div>
-                    <div th:unless="${user==null}" style="float: right;">
-                        <span th:text="${user.nickname}"></span>
-                        <span>님 안녕하세요!</span>
-                        <a href="/logout" class="btns btn_bdr4 btn_mid" style="text-decoration-line: none;">로그아웃</a>
-                        <a href="/modify" class="btns btn_bdr5 btn_mid" style="text-decoration-line: none;">회원정보 수정</a>
-                    </div>
+        <nav>
+            <li style="float:left;">
+                <a style="color:323232;font-size: 2em;font-weight: bold;">Budget Checker</a>
+            </li>
 
-                </header>
+            <div id="mobile-menu-close">
+                <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
             </div>
-        </main>
+            <ul id="menu" class="shadow" style="display:inline-block;zoom:1;.display:inline;">
+                <li>
+                    <a href="#about">About</a>
+                </li>
+                <!--
+                <li>
+                    <a href="#experience">Experience</a>
+                </li>
+                 -->
+                <li>
+                    <a href="#education">Education</a>
+                </li>
+                <li>
+                    <a href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a href="#skills">Skills</a>
+                </li>
+                <li>
+                    <a href="#certificate">Certificate</a>
+                </li>
+                <li>
+                    <a href="#contact">Contact</a>
+                </li>
+            </ul>
+
+
+            <ul style="float:right;">
+                <div th:if="${user==null}" class="col-md-3 text-end">
+                    <li>
+                        <a href="/auth/login" role="button" class="btn btn-outline-primary me-2"
+                           style="text-decoration-line: none;">Login</a>
+                    </li>
+
+                    <li>
+                        <a href="/auth/join" role="button" class="btn btn-primary" style="text-decoration-line: none;">Sign-up</a>
+                    </li>
+
+                </div>
+                <div th:unless="${user==null}">
+                    <li>
+                        <span style="font-size:1.1em; font-weight: bold ;" th:text="${user.nickname}"></span>
+                        <span style="font-size:1.1em; margin-left:5px;">님 안녕하세요!</span>
+                    </li>
+
+                    <li>
+                        <a href="/logout" class="btns btn_bdr5 btn_mid"
+                           style="text-decoration-line: none; margin-left:10px;">로그아웃</a>
+                    </li>
+
+                    <li>
+                        <a href="/modify" class="btns btn_bdr5 btn_mid" style="text-decoration-line: none; ">회원정보 수정</a>
+                    </li>
+
+                </div>
+            </ul>
+
+
+        </nav>
     </header>
 
 
-    <th:block layout:fragment="content"></th:block>
-
+    <th:block layout:fragment="content">
+    </th:block>
 
 
     <footer>Copyright(c) DY.All rights reserved.</footer>
