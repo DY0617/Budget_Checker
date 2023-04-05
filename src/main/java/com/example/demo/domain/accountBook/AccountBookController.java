@@ -1,6 +1,8 @@
 package com.example.demo.domain.accountBook;
 
 import com.example.demo.common.dto.MessageDto;
+import com.example.demo.common.dto.UserDto;
+import com.example.demo.common.security.auth.LoginUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +22,10 @@ public class AccountBookController {
     }
 
     @GetMapping("/account")
-    public String openAccountMain(Model model) {
-
+    public String openAccountMain(Model model,@LoginUser UserDto.Response user) {
+        if(user != null){
+            model.addAttribute("user",user);
+        }
         return "account/main";
     }
 }
