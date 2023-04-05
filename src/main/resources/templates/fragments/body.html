@@ -3,22 +3,37 @@
 <body th:fragment="main-body">
 <div id="adm_wrap">
     <header>
-        <div class="head">
-            <a href="/account" class="on" style="color:323232;font-size: 2em;font-weight: bold;">BudgetChecker</a>
+        <main>
+            <div class="container">
+                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-            <div th:if="${user==null}" style="float: right;">
-                    <a href="/auth/login" role="button" class="btns btn_bdr1 btn_mid"> 로그인</a>
-                    <a href="/auth/join" role="button" class="btns btn_bdr3 btn_mid"> 회원가입</a>
-            </div>
+                    <ul class="nav col-12 col-md-auto mb-2 justify-content-left mb-md-0">
+                        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+                        <li><a href="#" class="nav-link px-2">Features</a></li>
+                        <li><a href="#" class="nav-link px-2">Pricing</a></li>
+                        <li><a href="#" class="nav-link px-2">FAQs</a></li>
+                        <li><a href="#" class="nav-link px-2">About</a></li>
+                    </ul>
+                    <a style="color:323232;font-size: 2em;font-weight: bold;">Budget Checker</a>
+                    <div th:if="${user==null}" class="col-md-3 text-end">
+                        <a href="/auth/login" role="button" class="btn btn-outline-primary me-2">Login</a>
+                        <a href="/auth/join" role="button" class="btn btn-primary">Sign-up</a>
+                    </div>
+                    <div th:unless="${user==null}" style="float: right;">
+                        <span th:text="${user.nickname}"></span>
+                        <span>님 안녕하세요!</span>
+                        <a href="/logout" class="btns btn_bdr4 btn_mid">로그아웃</a>
+                        <a href="/modify" class="btns btn_bdr5 btn_mid">회원정보 수정</a>
+                    </div>
 
-            <div th:unless="${user==null}" style="float: right;">
-                <span th:text="${user.nickname}"></span>
-                <span>님 안녕하세요!</span>
-                <a href="/logout" class="btns btn_bdr4 btn_mid">로그아웃</a>
-                <a href="/modify" class="btns btn_bdr5 btn_mid">회원정보 수정</a>
+                </header>
             </div>
-        </div>
+        </main>
     </header>
+
+
+    <th:block layout:fragment="content"></th:block>
+
 
 
     <footer>Copyright(c) DY.All rights reserved.</footer>
