@@ -63,11 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/auth/login")
                 .loginProcessingUrl("/auth/loginProc")
                 .failureHandler(customFailureHandler)
-                .defaultSuccessUrl("/access")
+                .defaultSuccessUrl("/account")
 
                 .and()
                 .logout()
-                .logoutSuccessUrl("/access")
+                .logoutSuccessUrl("/account")
                 .invalidateHttpSession(true).deleteCookies("JSESSIONID");
     }
 

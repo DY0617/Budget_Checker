@@ -16,14 +16,14 @@
                     </ul>
                     <a style="color:323232;font-size: 2em;font-weight: bold;">Budget Checker</a>
                     <div th:if="${user==null}" class="col-md-3 text-end">
-                        <a href="/auth/login" role="button" class="btn btn-outline-primary me-2">Login</a>
-                        <a href="/auth/join" role="button" class="btn btn-primary">Sign-up</a>
+                        <a href="/auth/login" role="button" class="btn btn-outline-primary me-2" style="text-decoration-line: none;">Login</a>
+                        <a href="/auth/join" role="button" class="btn btn-primary" style="text-decoration-line: none;">Sign-up</a>
                     </div>
                     <div th:unless="${user==null}" style="float: right;">
                         <span th:text="${user.nickname}"></span>
                         <span>님 안녕하세요!</span>
-                        <a href="/logout" class="btns btn_bdr4 btn_mid">로그아웃</a>
-                        <a href="/modify" class="btns btn_bdr5 btn_mid">회원정보 수정</a>
+                        <a href="/logout" class="btns btn_bdr4 btn_mid" style="text-decoration-line: none;">로그아웃</a>
+                        <a href="/modify" class="btns btn_bdr5 btn_mid" style="text-decoration-line: none;">회원정보 수정</a>
                     </div>
 
                 </header>
