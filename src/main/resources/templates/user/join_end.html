@@ -118,6 +118,7 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
 
+
     </style>
 
 
@@ -132,32 +133,15 @@
         <div class="input-form col-md-12 mx-auto">
             <main class="form-signin w-100 m-auto">
 
-                    <a href="/account" class="h2 mb-3 fw-semibold"
-                       style="text-decoration-line: none;">Budget-Checker</a>
-                    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <a href="/account" class="h2 mb-3 fw-semibold"
+                   style="text-decoration-line: none;">Budget-Checker</a>
 
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="username" name="username" placeholder="username">
-                        <label th:for="username">아이디를 입력해주세요.</label>
-                    </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="password" name="password"
-                               placeholder="password">
-                        <label th:for="password">비밀번호를 입력해주세요.</label>
-                    </div>
+                <h1 class="h6 mb-3 fw-normal"><br>회원가입이 성공적으로 완료되었습니다.<br><br></h1>
 
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                    </div>
-                    <span th:if="${error!=null}">
-                    <p style="color:red;" th:text="${exception}"></p>
-                </span>
 
-                    <button class="w-100 btn btn-lg btn-primary" type="submit" style="margin-bottom:2px;">Sign in
-                    </button>
-                    <a href="/auth/join" class="w-100 btn btn-lg btn-secondary">Sign up</a>
+                <a href="/auth/login" role="button" class="btn btn-primary btn-lg btn-block" style="margin-bottom:2px;">로그인
+                    페이지로 이동
+                </a>
 
             </main>
         </div>

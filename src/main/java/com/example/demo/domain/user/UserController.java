@@ -56,6 +56,11 @@ public class UserController {
         return "/user/join";
     }
 
+    @GetMapping("/user/join_end")
+    public String join_end() {
+        return "/user/join_end";
+    }
+
     /* 회원가입 */
 
     @PostMapping("/auth/joinProc")
@@ -77,7 +82,7 @@ public class UserController {
                 model.addAttribute(key, validatorResult.get(key));
             }
             /* 회원가입 페이지로 다시 리턴 */
-            return "/user/join";
+            return "/user/join_end";
         }
         userService.userJoin(dto);
         return "redirect:/auth/login";
