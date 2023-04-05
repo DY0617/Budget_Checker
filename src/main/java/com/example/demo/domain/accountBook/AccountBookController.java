@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AccountBookController {
 
     @GetMapping("/account")
-    public String openPostWrite(Model model) {
+    public String openAccountMain(Model model) {
+
         return "account/main";
     }
 }
