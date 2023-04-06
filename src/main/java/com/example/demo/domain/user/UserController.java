@@ -52,7 +52,6 @@ public class UserController {
 
     @GetMapping("/auth/join")
     public String join() {
-        System.out.println("join 프린트");
         return "/user/join";
     }
 

@@ -2,6 +2,7 @@ package com.example.demo.domain.user;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,13 +18,16 @@ public class UserControllerTest {
     UserService userService;
 
     @BeforeAll
-    public void beforeAll(){
+    void beforeAll(){
         System.out.println("====================== UserControllerTest Start ======================");
     }
 
     @AfterAll
-    public void afterAll(){
+    void afterAll(){
         System.out.println("======================= UserControllerTest End =======================");
     }
+
+    @Test
+    void
 
 }
