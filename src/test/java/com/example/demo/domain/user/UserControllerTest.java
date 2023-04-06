@@ -32,12 +32,12 @@ public class UserControllerTest {
 
     @BeforeAll
     static void beforeAll(){
-        System.out.println("====================== UserControllerTest Start ======================");
+        System.out.println("\n====================== UserControllerTest Start ======================\n");
     }
 
     @AfterAll
     static void afterAll(){
-        System.out.println("======================= UserControllerTest End =======================");
+        System.out.println("\n======================= UserControllerTest End =======================\n");
     }
 
     @Test
