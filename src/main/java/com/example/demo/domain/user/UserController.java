@@ -65,12 +65,7 @@ public class UserController {
 
     @PostMapping("/auth/joinProc")
     public String joinProc(@Valid UserDto.Request dto, Errors errors, Model model) {
-
-        System.out.println("joinProc");
-
-        System.out.println(dto.getNickname());
-        System.out.println(dto.getUsername());
-        System.out.println(dto.getEmail());
+        
 
         if (errors.hasErrors()) {
             /* 회원가입 실패시 입력 데이터 값을 유지 */
