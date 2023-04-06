@@ -2,6 +2,8 @@ package com.example.demo;
 
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +17,16 @@ class DemoApplicationTests {
 
 	@Autowired
 	private SqlSessionFactory sessionFactory;
+
+	@BeforeAll
+	static void beforeAll(){
+		System.out.println("====================== DemoApplicationTests Start ======================");
+	}
+
+	@AfterAll
+	static void afterAll(){
+		System.out.println("======================= DemoApplicationTests End =======================");
+	}
 
 	@Test
 	void contextLoads() {
