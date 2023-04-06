@@ -20,7 +20,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -39,14 +41,13 @@ public class UserControllerTest {
     AuthenticationFailureHandler authenticationFailureHandler;
 
 
-
     @BeforeAll
-    static void beforeAll(){
+    static void beforeAll() {
         System.out.println("\n====================== UserControllerTest Start ======================\n");
     }
 
     @AfterAll
-    static void afterAll(){
+    static void afterAll() {
         System.out.println("\n======================= UserControllerTest End =======================\n");
     }
 
@@ -54,7 +55,7 @@ public class UserControllerTest {
     private WebApplicationContext context;
 
     @Test
-    public void setUp(){
+    public void setUp() {
         mvc = MockMvcBuilders
                 .webAppContextSetup(context)
                 .build();
@@ -62,9 +63,9 @@ public class UserControllerTest {
 
     @Test
     @DisplayName("회원가입 테스트")
-    void joinProc() throws Exception{
+    void joinProc() throws Exception {
 
-        UserDto.Request dto=new UserDto.Request();
+        UserDto.Request dto = new UserDto.Request();
 
         dto.setUsername("controllerTest");
         dto.setPassword("test1234!");
@@ -73,8 +74,9 @@ public class UserControllerTest {
 
 
         mvc.perform(MockMvcRequestBuilders.post("/auth/joinProc")
-                .content(new ObjectMapper().writeValueAsString(dto))
-                );
+                        .content(new ObjectMapper().writeValueAsString(dto))
+                        .contentType(MediaType.APPLICATION_JSON).with(csrf()))
+                .andExpect(status().isOk());
     }
 
 }
